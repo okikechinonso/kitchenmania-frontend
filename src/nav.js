@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-export default function Nav(){
-    return(
-        <div className="relative bg-white">
+export default function Nav() {
+  return (
+    <div className="relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
           <div className="flex  lg:w-0 lg:flex-1">
@@ -13,7 +13,12 @@ export default function Nav(){
                 alt=""
               />
             </Link>
-            <h2 className="text-3xl font-semibold">Kitchen Mania<span  style={{color: "red"}} className="font-bold ">.</span></h2>
+            <h2 className="text-3xl font-semibold">
+              Kitchen Mania
+              <span style={{ color: "red" }} className="font-bold ">
+                .
+              </span>
+            </h2>
           </div>
           <nav className="hidden md:flex space-x-10">
             <button
@@ -48,5 +53,5 @@ export default function Nav(){
         </div>
       </div>
     </div>
-    );
+  );
 }
