@@ -1,24 +1,22 @@
 import { Link } from "react-router-dom";
 export default function Signup() {
   return (
-    <div className="mx-auto mt-12 w-1/4 flex-col items-center" >
-      <div className="flex w-3/4 mx-auto items-center">
-        <Link to="#">
-          <span className="sr-only">Workflow</span>
+    <div className="mx-auto mt-16 flex-col items-center md:w-1/4 ">
+      <Link to="/"className="flex ml-6 mr-6 md:w-3/4 mx-auto items-center">
           <img
             className="w-12"
             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
             alt=""
           />
-        </Link>
-        <h3 className=" text-3xl font-semibold">
+        
+        <h3 className="text-2xl font-semibold">
           Kitchen Mania
           <span style={{ color: "red" }} className="font-bold ">
             .
           </span>
         </h3>
-      </div>
-      <div className=" flex-col">
+      </Link>
+      <div className="ml-6 mr-6 flex-col">
         <div className="mt-1 mb-2 w-full relative rounded-md shadow-lg">
           <input
             type="text"
@@ -64,12 +62,15 @@ export default function Signup() {
             placeholder="Confirm Password"
           />
         </div>
-        <Link
-          to="#"
-          className="mt-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-        >
-          Sign up
-        </Link>
+        <div className="flex justify-between items-center">
+          <Link
+            to="#"
+            className="mt-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+          >
+            Sign up
+          </Link>
+          <Link to="/signin">Have an account?</Link>
+        </div>
       </div>
     </div>
   );
