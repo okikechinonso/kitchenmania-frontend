@@ -5,7 +5,7 @@ export default function Login() {
       <Link to="/" className="flex w-3/4 mx-auto items-center mb-3">
         
           <img
-            className="w-7 ml-"
+            className="w-7 "
             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
             alt=""
           />

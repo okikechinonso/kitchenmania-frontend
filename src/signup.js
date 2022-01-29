@@ -1,34 +1,59 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
 export default function Signup() {
-  
+  const [user, setUser] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+  });
+  const [alert, setAlert] = useState("");
+
+  const handleComfirmPassword = (event) => {
+    if (event.target.value !== user.password) {
+      setAlert((c) => (c = "password not match"));
+    } else {
+      setAlert((c) => (c = ""));
+    }
+  };
+
+  const handleInput = (event) => {
+    setUser({
+      ...user,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <div className="mx-auto mt-16 flex-col items-center md:w-1/4 ">
-      <Link to="/"className="flex ml-6 mr-6 md:w-3/4 mx-auto items-center">
-          <img
-            className="w-12"
-            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-            alt=""
-          />
-        
+    <div className="sm:mx-auto sm:mt-12 sm:w-1/4 w-3/4 mt-40 mx-auto flex-col items-center ">
+      <Link to="/" className="flex w-3/4 mx-auto items-center mb-3">
         <h3 className="text-2xl font-semibold">
           Kitchen Mania
-          <span style={{ color: "red" }} className="font-bold ">
+          <span style={{ color: "red" }} className="font-bold">
             .
           </span>
         </h3>
       </Link>
-      <div className="ml-6 mr-6 flex-col">
+      <form onSubmit={handleSubmit} className="ml-6 mr-6 flex-col">
         <div className="mt-1 mb-2 w-full relative rounded-md shadow-lg">
           <input
+            required
+            onChange={handleInput}
             type="text"
             name="first_name"
-            id="price"
             className="focus:ring-indigo-500 focus:border-indigo-500 block w-full h-12 pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
             placeholder="First Name"
           />
         </div>
         <div className="mb-2 relative rounded-md shadow-lg">
           <input
+            required
+            onChange={handleInput}
             type="text"
             name="last_name"
             id="last_name"
@@ -38,6 +63,8 @@ export default function Signup() {
         </div>
         <div className="mb-2 relative rounded-md shadow-lg">
           <input
+            required
+            onChange={handleInput}
             type="email"
             name="email"
             id="email"
@@ -47,6 +74,8 @@ export default function Signup() {
         </div>
         <div className="mb-2 relative rounded-md shadow-lg">
           <input
+            required
+            onChange={handleInput}
             type="password"
             name="password"
             id="price"
@@ -54,8 +83,11 @@ export default function Signup() {
             placeholder="Password"
           />
         </div>
+        <div className="text-sm ml-1 text-red-800">{alert}</div>
         <div className="mb-2 relative rounded-md shadow-lg">
           <input
+            required
+            onChange={handleComfirmPassword}
             type="password"
             name="confirm_password"
             id="price"
@@ -63,16 +95,16 @@ export default function Signup() {
             placeholder="Confirm Password"
           />
         </div>
+        <div className="text-sm ml-1 text-red-800">{alert}</div>
         <div className="flex justify-between items-center">
-          <Link
-            to="#"
+          <input
+            type="submit"
             className="mt-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-          >
-            Sign up
-          </Link>
-          <Link to="/signin">Have an account?</Link>
+            value="Sign Up"
+          />
+          <Link to="/login">Have an account?</Link>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
