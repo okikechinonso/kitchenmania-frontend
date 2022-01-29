@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 export default function Signup() {
+  
   return (
     <div className="mx-auto mt-16 flex-col items-center md:w-1/4 ">
       <Link to="/"className="flex ml-6 mr-6 md:w-3/4 mx-auto items-center">
