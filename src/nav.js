@@ -5,20 +5,15 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
           <div className="flex  lg:w-0 lg:flex-1">
-            <Link to="#">
-              <span className="sr-only">Workflow</span>
-              <img
-                className="h-8 w-auto mr-1 sm:h-10"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                alt=""
-              />
-            </Link>
+            <Link to="/">
             <h2 className="text-3xl font-semibold">
               Kitchen Mania
               <span style={{ color: "red" }} className="font-bold ">
                 .
               </span>
             </h2>
+            </Link>
+            
           </div>
           <nav className="hidden md:flex space-x-10">
             <button

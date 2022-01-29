@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import axios from "./axios";
 
 export default function Signup() {
   const [user, setUser] = useState({
@@ -27,6 +28,19 @@ export default function Signup() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    axios
+      .post("/signup", user, config)
+      .then((result) => {
+        console.log("Success:", result);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
