@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 export default function Login() {
   return (
-    <div className="mx-auto mt-12 w-1/4 flex-col items-center">
-      <Link to="/" className="flex w-3/4 mx-auto items-center">
+    <div className=" sm:mx-auto sm:mt-12 sm:w-1/4 w-3/4 mt-40 mx-auto flex-col items-center">
+      <Link to="/" className="flex w-3/4 mx-auto items-center mb-3">
         
           <img
-            className="w-12"
+            className="w-7 ml-"
             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
             alt=""
           />
         
-        <h3 className=" text-3xl font-semibold">
+        <h3 className=" text-2xl font-semibold">
           Kitchen Mania
           <span style={{ color: "red" }} className="font-bold ">
             .
