@@ -12,7 +12,7 @@ export default function State(prop) {
   };
   const [state, dispatch] = useReducer(StateReducer, initialState);
 
-  function Login(email, password) {
+  function LoginUser(email, password) {
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -41,6 +41,7 @@ export default function State(prop) {
         alerts: state.alerts,
         isAuthenticated: state.isAuthenticated,
         loading: state.loading,
+        LoginUser
       }}
     >
         {prop.children}

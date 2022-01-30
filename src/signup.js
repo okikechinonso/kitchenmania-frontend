@@ -10,6 +10,7 @@ export default function Signup() {
     password: "",
   });
   const [alert, setAlert] = useState("");
+  const [success, setSuccess] = useState("")
 
   const handleComfirmPassword = (event) => {
     if (event.target.value !== user.password) {
@@ -36,7 +37,10 @@ export default function Signup() {
     axios
       .post("/signup", user, config)
       .then((result) => {
-        console.log("Success:", result);
+        console.log("Success:",);
+        if (result.data.errors === "") {
+          setSuccess((c) => (c = "successful signup") )
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -45,7 +49,8 @@ export default function Signup() {
 
   return (
     <div className="sm:mx-auto sm:mt-12 sm:w-1/4 w-3/4 mt-40 mx-auto flex-col items-center ">
-      <Link to="/" className="flex w-3/4 mx-auto items-center mb-3">
+      <div className="mb-5 text-green-600 text-sm border h-6 p-3 rounded-md bg-green-600">{success}</div>
+      <Link to="/" className="flex justify-around  w-3/4 mx-auto items-center mb-3">
         <h3 className="text-2xl font-semibold">
           Kitchen Mania
           <span style={{ color: "red" }} className="font-bold">
@@ -92,7 +97,7 @@ export default function Signup() {
             onChange={handleInput}
             type="password"
             name="password"
-            id="price"
+            id="password"
             className="focus:ring-indigo-500 focus:border-indigo-500 block w-full h-12 pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
             placeholder="Password"
           />
@@ -104,7 +109,7 @@ export default function Signup() {
             onChange={handleComfirmPassword}
             type="password"
             name="confirm_password"
-            id="price"
+            id="confirm_password"
             className="focus:ring-indigo-500 focus:border-indigo-500 block w-full h-12 pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
             placeholder="Confirm Password"
           />
