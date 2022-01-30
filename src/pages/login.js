@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { createContext, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 import  StateContext  from "../context_reducer/context";
@@ -6,9 +6,16 @@ export default function Login() {
   const stateContext = useContext(StateContext);
   const { LoginUser, user } = stateContext;
   const [crendential, setCredential] = useState({ email: "", password:"", });
+  const handleInput = (event) =>{
+    setCredential({
+      ...crendential,
+      [event.target.name]: event.target.value
+    })
+    console.log(crendential)
+  }
   const handleSubmit = (event) => {
     event.preventDefault();
-    LoginUser();
+    LoginUser(crendential.email,crendential.password);
   };
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -23,7 +30,7 @@ export default function Login() {
             Sign in to your account
           </h2>
         </Link>
-        <form className="mt-8 space-y-6" action="#" method="POST">
+        <form onSubmit={handleSubmit}className="mt-8 space-y-6" action="#" method="POST">
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
@@ -31,6 +38,7 @@ export default function Login() {
                 Email address
               </label>
               <input
+              onChange={handleInput}
                 id="email-address"
                 name="email"
                 type="email"
@@ -45,6 +53,7 @@ export default function Login() {
                 Password
               </label>
               <input
+               onChange={handleInput}
                 id="password"
                 name="password"
                 type="password"

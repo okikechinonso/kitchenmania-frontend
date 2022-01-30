@@ -21,18 +21,22 @@ export default function AppState(prop) {
       },
     };
     try {
-      const response = await axios.post("/auth/login", {
+      const response = await axios.post("/login", {
         email: `${email}`,
         password: `${password}`,
         config,
       });
+
       if (response.data.data !== null) {
         dispatch({
           type: "LOGIN",
           payload: response.data.data,
         });
+        console.log(response);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <StateContext.Provider
@@ -43,10 +47,10 @@ export default function AppState(prop) {
         alerts: state.alerts,
         isAuthenticated: state.isAuthenticated,
         loading: state.loading,
-        LoginUser
+        LoginUser,
       }}
     >
-        {prop.children}
+      {prop.children}
     </StateContext.Provider>
   );
 }

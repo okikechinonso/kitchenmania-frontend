@@ -8,12 +8,12 @@ export default function StateReducer(state, action) {
         user: action.payload.user,
         token: action.payload.access_token,
         refresh_token: action.payload.refresh_token,
-        alert: {
-          message: action.successMessage.message,
-          color: 'success',
-          status: action.successMessage.status,
-          show: false,
-        },
+        // alert: {
+        //   message: action.successMessage.message,
+        //   color: 'success',
+        //   status: action.successMessage.status,
+        //   show: false,
+        // },
         isAuthenticated: true,
         loading: false,
       }
