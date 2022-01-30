@@ -21,10 +21,12 @@ export default function Signup() {
   };
 
   const handleInput = (event) => {
-    setUser({
-      ...user,
-      [event.target.name]: event.target.value,
-    });
+    if (event.target.value.trim().length!==0){
+      setUser({
+        ...user,
+        [event.target.name]: event.target.value,
+      });
+    }
   };
 
   const handleSubmit = (event) => {
@@ -40,6 +42,10 @@ export default function Signup() {
         console.log("Success:",result);
         if (result.data.errors === "") {
           setSuccess((c) => (c = "successful signup") )
+          setUser({
+            ...user,
+            first_name: "", last_name: "", email:"",password:"",
+          })
         }
       })
       .catch((error) => {
@@ -49,7 +55,6 @@ export default function Signup() {
 
   return (
     <div className="sm:mx-auto sm:mt-12 sm:w-1/4 w-3/4 mt-40 mx-auto flex-col items-center ">
-      <div className="mb-5 text-green-600 text-sm border h-6 p-3 rounded-md bg-green-600">{success}</div>
       <Link to="/" className="flex justify-around  w-3/4 mx-auto items-center mb-3">
         <h3 className="text-2xl font-semibold">
           Kitchen Mania

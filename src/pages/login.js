@@ -1,21 +1,28 @@
-import { createContext, useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
-import  StateContext  from "../context_reducer/context";
+import StateContext from "../context_reducer/context";
+
 export default function Login() {
   const stateContext = useContext(StateContext);
-  const { LoginUser, user } = stateContext;
-  const [crendential, setCredential] = useState({ email: "", password:"", });
-  const handleInput = (event) =>{
-    setCredential({
-      ...crendential,
-      [event.target.name]: event.target.value
-    })
-    console.log(crendential)
-  }
+  const { LoginUser } = stateContext;
+  const [crendential, setCredential] = useState({ email: "", password: "" });
+
+  const handleInput = (event) => {
+    if (event.target.value.trim().length !== 0 && event.target.value.trim()) {
+      setCredential({
+        ...crendential,
+        [event.target.name]: event.target.value,
+      });
+    }
+    console.log(crendential);
+  };
+
+ 
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    LoginUser(crendential.email,crendential.password);
+    LoginUser(crendential.email, crendential.password);
   };
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -30,7 +37,12 @@ export default function Login() {
             Sign in to your account
           </h2>
         </Link>
-        <form onSubmit={handleSubmit}className="mt-8 space-y-6" action="#" method="POST">
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 space-y-6"
+          action="#"
+          method="POST"
+        >
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
@@ -38,10 +50,11 @@ export default function Login() {
                 Email address
               </label>
               <input
-              onChange={handleInput}
+                onChange={handleInput}
                 id="email-address"
                 name="email"
                 type="email"
+                value={crendential.email}
                 autocomplete="email"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
@@ -53,10 +66,11 @@ export default function Login() {
                 Password
               </label>
               <input
-               onChange={handleInput}
+                onChange={handleInput}
                 id="password"
                 name="password"
                 type="password"
+                value={crendential.password}
                 autocomplete="current-password"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
