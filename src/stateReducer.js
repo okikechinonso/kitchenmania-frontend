@@ -1,8 +1,3 @@
-import { useReducer } from 'react';
-
-
-
-
 export default function StateReducer(state, action) {
   switch (action.type) {
     case 'LOGIN': {

@@ -37,7 +37,7 @@ export default function Signup() {
     axios
       .post("/signup", user, config)
       .then((result) => {
-        console.log("Success:",);
+        console.log("Success:",result);
         if (result.data.errors === "") {
           setSuccess((c) => (c = "successful signup") )
         }

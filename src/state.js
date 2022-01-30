@@ -1,7 +1,9 @@
 import StateReducer from "./stateReducer";
-import { StateContext } from "./context";
+import StateContext from "./context";
+import axios from "./axios";
+import { useReducer } from "react";
 
-export default function State(prop) {
+export default function AppState(prop) {
   const initialState = {
     user: null,
     token: localStorage.getItem("token"),
@@ -12,7 +14,7 @@ export default function State(prop) {
   };
   const [state, dispatch] = useReducer(StateReducer, initialState);
 
-  function LoginUser(email, password) {
+  async function LoginUser(email, password) {
     const config = {
       headers: {
         "Content-Type": "application/json",
