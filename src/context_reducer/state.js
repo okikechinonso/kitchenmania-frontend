@@ -1,6 +1,6 @@
 import StateReducer from "./stateReducer";
 import StateContext from "./context";
-import axios from "./axios";
+import axios from "../helpers/axios";
 import { useReducer } from "react";
 
 export default function AppState(prop) {

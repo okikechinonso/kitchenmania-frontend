@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
-import  StateContext  from "./context";
+import  StateContext  from "../context_reducer/context";
 export default function Login() {
   const stateContext = useContext(StateContext);
   const { LoginUser, user } = stateContext;
